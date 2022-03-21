@@ -46,7 +46,7 @@ while True:
     if data.decode().strip() == "d":
         keyboard.press("d")
         print("Player right")
-        
+
     if data.decode().strip() == "!d":
         keyboard.release("d")
 
@@ -56,3 +56,4 @@ while True:
 
     if data.decode().strip() == "!shift":
         keyboard.release("shift")
+        print("Shotting")
