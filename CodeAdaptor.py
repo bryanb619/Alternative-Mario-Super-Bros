@@ -12,12 +12,12 @@ from pynput.keyboard import Controller
 
 print("Hello Welcome to Alternative Mario Brothers:)")
 
-print("""Please enter the COM port of your controller.
+"""Please enter the COM port of your controller.
 You can find it if you go to your device manager and look for COM & LPT
 section. find your device by unpluging it and pluging it again.
 You write it like:
 ex: COM8
-""")
+"""
 
 ser = serial.Serial('COM5', 115200, timeout=.1)
 
