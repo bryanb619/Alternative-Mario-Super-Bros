@@ -1,5 +1,6 @@
-# pip installs
-"""
+
+""" 
+    pip installs
 pip install pyserial
 pip install keyboard
 pip install controller
@@ -18,7 +19,7 @@ You write it like:
 ex: COM8
 """)
 
-ser = serial.Serial(input(">>"), 9600)
+ser = serial.Serial('COM5', 115200, timeout=.1)
 
 print("connection established")
 
@@ -27,17 +28,17 @@ keyboard = Controller()
 while True:
     data = ser.readline()
     # jump button
-    if data.decode().strip() == "space":
-        keyboard.press("space")
-        print("Player jump")
+    if data.decode().strip() == "x":
+        keyboard.press("x")
+        
 
-    if data.decode().strip() == "!Space":
-        keyboard.release("Space")
+    if data.decode().strip() == "!x":
+        keyboard.release("x")
 
     # left
     if data.decode().strip() == "a":
         keyboard.press("a")
-        print("Player left")
+        
 
     if data.decode().strip() == "!a":
         keyboard.release("a")
@@ -45,15 +46,15 @@ while True:
     # Right
     if data.decode().strip() == "d":
         keyboard.press("d")
-        print("Player right")
+        
 
     if data.decode().strip() == "!d":
         keyboard.release("d")
 
     # Shoot button
-    if data.decode().strip() == "shift":
-        keyboard.press("shift")
+    if data.decode().strip() == "z":
+        keyboard.press("z")
 
-    if data.decode().strip() == "!shift":
-        keyboard.release("shift")
-        print("Shotting")
+    if data.decode().strip() == "!z":
+        keyboard.release("z")
+        
