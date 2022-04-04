@@ -1,3 +1,4 @@
+// Digital pins
 const int trigger1 = 9;
 const int echo1 = 10;
 const int trigger2 =  5;
@@ -6,7 +7,8 @@ const int trigger3 =  2;
 const int echo3 = 3;
 const int shoot =  12;
 
-const int pressed_distance = 6;
+const int pressed_distance = 15;
+const int pressed_distance_jump = 30;
 
 int jump;
 int leftButton;
@@ -30,7 +32,7 @@ void loop() {
   CheckDistance();
 
   //jump button
-  if(!CheckIfPressed(jump)){
+  if(!CheckIfPressedJump(jump)){
     Serial.println("x");
   }else{
     Serial.println("!x");
@@ -63,6 +65,15 @@ void CheckDistance(){
   RightButton = SRF3.getCentimeter();
 }
 
+bool CheckIfPressedJump(int x){
+  bool buttonValue = false;
+  
+  if(x<pressed_distance_jump){
+    buttonValue = true;  
+  }
+
+  return buttonValue;
+}
 
 bool CheckIfPressed(int x){
   bool buttonValue = false;

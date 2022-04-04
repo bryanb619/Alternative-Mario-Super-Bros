@@ -2,15 +2,15 @@
 """ 
     pip installs
 pip install pyserial
-pip install keyboard
 pip install controller
 pip install pynput 
-
+xax
 """
+
 import serial
 from pynput.keyboard import Controller
 
-print("Hello Welcome to Alternative Mario Brothers:)")
+# print("Hello Welcome to Alternative Mario Brothers:)")
 
 """Please enter the COM port of your controller.
 You can find it if you go to your device manager and look for COM & LPT
@@ -18,8 +18,10 @@ section. find your device by unpluging it and pluging it again.
 You write it like:
 ex: COM8
 """
+# com will be around 4 or 5 !
 
-ser = serial.Serial('COM5', 115200, timeout=.1)
+ser = serial.Serial('COM6', 115200, timeout=.1)
+   
 
 print("connection established")
 
@@ -30,10 +32,12 @@ while True:
     # jump button
     if data.decode().strip() == "x":
         keyboard.press("x")
+        print("salta");
         
 
     if data.decode().strip() == "!x":
         keyboard.release("x")
+        print("aterra");
 
     # left
     if data.decode().strip() == "a":
@@ -57,4 +61,3 @@ while True:
 
     if data.decode().strip() == "!z":
         keyboard.release("z")
-        
