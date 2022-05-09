@@ -8,7 +8,7 @@ const int echo3 = 3;
 const int shoot =  12;
 
 const int pressed_distance = 15;
-const int pressed_distance_jump = 30;
+const int pressed_distance_jump_offset = 2;
 
 int jump;
 int leftButton;
@@ -32,7 +32,7 @@ void loop() {
   CheckDistance();
 
   //jump button
-  if(!CheckIfPressedJump(jump)){
+  if(CheckIfPressedJump(jump)){
     Serial.println("x");
   }else{
     Serial.println("!x");
@@ -68,8 +68,10 @@ void CheckDistance(){
 bool CheckIfPressedJump(int x){
   bool buttonValue = false;
   
-  if(x<pressed_distance_jump){
-    buttonValue = true;  
+  if(x<pressed_distance - pressed_distance_jump_offset){
+    buttonValue = false;  
+  }else if(x>pressed_distance + pressed_distance_jump_offset){
+     buttonValue = true;
   }
 
   return buttonValue;
